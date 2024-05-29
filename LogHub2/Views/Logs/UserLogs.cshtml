@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<LogHub2.Models.Entities.Log>
+
+@if (true)
+{
+    <h1>Logs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>User</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.Id</td>
+                    <td>@log.Type</td>
+                    <td>@log.Severity</td>
+                    <td>@log.Username</td>
+                    <td>@log.Message</td>
+                    <td>
+                        <form method="post" asp-controller="Logs" asp-action="Delete" asp-route-id="@log.Id">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

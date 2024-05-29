@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model LogHub2.Models.AddLogViewModel
+
+<h1> Add Log </h1>
+<form class="form" method="post" asp-controller="Logs" asp-action="Add">
+    <div class="form-group">
+        <label class="form-label"> Type </label>
+        <select class="form-select" id="Type" asp-for="Type">
+            <option selected>Type</option>
+            <option value="System">System</option>
+            <option value="Security">Security</option>
+            <option value="Audit">Audit</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label"> Severity </label>
+        <select class="form-select" id="Severity" asp-for="Severity">
+            <option selected>Severity</option>
+            <option value="Debug">Debug</option>
+            <option value="Warning">Warning</option>
+            <option value="Error">Error</option>
+        </select>
+        <span asp-validation-for="Severity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label"> Message </label>
+        <input type="text" class="form-control" id="message" placeholder="Message" asp-for="Message">
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

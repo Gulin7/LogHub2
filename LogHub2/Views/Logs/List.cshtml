@@ -1,0 +1,81 @@
+﻿@model List<LogHub2.Models.Entities.Log>
+
+@if (true)
+{
+    <h1>Logs</h1>
+
+    <div class="form-group">
+        <div>
+            <label class="form-label">Sort by Severity</label>
+            <select class="form-select" id="severity-sort">
+                <option value="">All Severities</option>
+                <option value="Debug">Debug</option>
+                <option value="Warning">Warning</option>
+                <option value="Error">Error</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Sort by Type</label>
+            <select class="form-select" id="type-sort">
+                <option value="">All Types</option>
+                <option value="System">System</option>
+                <option value="Security">Security</option>
+                <option value="Audit">Audit</option>
+            </select>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>User</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody id="logs-tbody">
+            @foreach (var log in Model)
+            {
+                <tr class="log-row" data-severity="@log.Severity" data-type="@log.Type">
+                    <td>@log.Id</td>
+                    <td>@log.Type</td>
+                    <td>@log.Severity</td>
+                    <td>@log.Username</td>
+                    <td>@log.Message</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script>
+    document.getElementById('severity-sort').addEventListener('change', function () {
+        filterLogs();
+        });
+
+    document.getElementById('type-sort').addEventListener('change', function () {
+            filterLogs();
+        });
+
+        function filterLogs() {
+           var selectedSeverity = document.getElementById('severity-sort').value;
+              var selectedType = document.getElementById('type-sort').value;
+
+              var rows = document.querySelectorAll('.log-row');
+           rows.forEach(function(row) {
+                var rowSeverity = row.getAttribute('data-severity');
+                var rowType = row.getAttribute('data-type');
+
+                var matchesSeverity = !selectedSeverity || rowSeverity === selectedSeverity;
+                var matchesType = !selectedType || rowType === selectedType;
+
+                if (matchesSeverity && matchesType) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+</script>

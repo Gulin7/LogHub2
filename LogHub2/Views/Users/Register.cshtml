@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model LogHub2.Models.UserViewModel
+
+<h1> Register </h1>
+<form method="post" class="form">
+    <div class="form-group">
+        <label> Username </label>
+        <input type="text" class="form-control" id="username" placeholder="Username" asp-for="Username">
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label> Password </label>
+        <input type="password" class="form-control" id="password" placeholder="Password" asp-for="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label> Email </label>
+        <input type="email" class="form-control" id="email" placeholder="Email" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a href="@Url.Action("Login", "Users")" class="btn btn-secondary">Login</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
