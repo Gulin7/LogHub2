@@ -18,11 +18,6 @@
         <input type="password" class="form-control" id="password" placeholder="Password" asp-for="Password">
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label> Email </label>
-        <input type="email" class="form-control" id="email" placeholder="Email" asp-for="Email">
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
     <div class="form-group mt-3">
         <button type="submit" class="btn btn-primary">Register</button>
         <a href="@Url.Action("Login", "Users")" class="btn btn-secondary">Login</a>

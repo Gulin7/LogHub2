@@ -5,6 +5,16 @@
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Email { get; set; }
+
+        private static int currentId = 1;
+
+        public User(string username, string password)
+        {
+            Id = currentId;
+            Username = username;
+            Password = password;
+            
+            currentId+=1;
+        }
     }
 }

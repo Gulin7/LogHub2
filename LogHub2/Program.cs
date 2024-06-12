@@ -44,10 +44,10 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "add",
-    pattern: "{controller=Logs}/{action=Add}/{id?}");
+    pattern: "{controller=Parents}/{action=Add}/{id?}");
 
 app.MapControllerRoute(
     name: "delete",
-    pattern: "{controller=Logs}/{action=Delete}/{id?}");
+    pattern: "{controller=Parents}/{action=Delete}/{id?}");
 
 app.Run();

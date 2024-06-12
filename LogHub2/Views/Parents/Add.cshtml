@@ -4,7 +4,7 @@
 @{
 }
 
-@model LogHub2.Models.AddLogViewModel
+@model LogHub2.Models.AddParentViewModel
 
 <h1> Add Log </h1>
 <form class="form" method="post" asp-controller="Logs" asp-action="Add">
@@ -19,19 +19,9 @@
         <span asp-validation-for="Type" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label class="form-label"> Severity </label>
-        <select class="form-select" id="Severity" asp-for="Severity">
-            <option selected>Severity</option>
-            <option value="Debug">Debug</option>
-            <option value="Warning">Warning</option>
-            <option value="Error">Error</option>
-        </select>
-        <span asp-validation-for="Severity" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label class="form-label"> Message </label>
-        <input type="text" class="form-control" id="message" placeholder="Message" asp-for="Message">
-        <span asp-validation-for="Message" class="text-danger"></span>
+        <label class="form-label"> Name </label>
+        <input type="text" class="form-control" id="name" placeholder="Name" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group mt-3">
         <button type="submit" class="btn btn-primary">Save</button>

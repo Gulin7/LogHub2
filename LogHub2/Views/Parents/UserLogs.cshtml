@@ -4,33 +4,30 @@
 @{
 }
 
-@model List<LogHub2.Models.Entities.Log>
+@model List<LogHub2.Models.Entities.Parent>
 
 @if (true)
 {
-    <h1>Logs</h1>
+    <h1>Parents</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Name</th>
                 <th>Type</th>
-                <th>Severity</th>
-                <th>User</th>
-                <th>Message</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var log in Model)
+            @foreach (var parent in Model)
             {
                 <tr>
-                    <td>@log.Id</td>
-                    <td>@log.Type</td>
-                    <td>@log.Severity</td>
-                    <td>@log.Username</td>
-                    <td>@log.Message</td>
+                    <td>@parent.Id</td>
+                    <td>@parent.Name</td>
+                    <td>@parent.Type</td>
+
                     <td>
-                        <form method="post" asp-controller="Logs" asp-action="Delete" asp-route-id="@log.Id">
+                        <form method="post" asp-controller="Parent" asp-action="Delete" asp-route-id="@parent.Id">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
 

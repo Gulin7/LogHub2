@@ -1,6 +1,7 @@
 ﻿using LogHub2.Data;
 using LogHub2.Models;
 using LogHub2.Models.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,14 +16,14 @@ namespace LogHub2.Controllers
             this.dbContext = dbContext;
         }
   
-        protected void SetLoggedInUser(string username)
+        protected void SetLoggedInUser(int userId)
         {
-            HttpContext.Session.SetString("CurrentUser", username);
+            HttpContext.Session.SetString("CurrentParent", Convert.ToString(userId));
         }
 
         protected string GetLoggedInUser()
         {
-            return HttpContext.Session.GetString("CurrentUser");
+            return HttpContext.Session.GetString("CurrentParent");
         }
 
         protected bool IsUserLoggedIn()
@@ -43,12 +44,7 @@ namespace LogHub2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User
-                {
-                    Username = viewModel.Username,
-                    Password = viewModel.Password,
-                    Email = viewModel.Email,
-                };
+                User user = new User (viewModel.Username, viewModel.Password);
 
                 await dbContext.Users.AddAsync(user);
                 await dbContext.SaveChangesAsync();
@@ -65,7 +61,7 @@ namespace LogHub2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginUserViewModel viewModel)
+        public async Task<IActionResult> Login(UserViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -73,8 +69,8 @@ namespace LogHub2.Controllers
                     .FirstOrDefaultAsync(u => u.Username == viewModel.Username && u.Password == viewModel.Password);
                 if (user != null)
                 {
-                    SetLoggedInUser(user.Username);
-                    return RedirectToAction("List", "Logs");
+                    SetLoggedInUser(user.Id);
+                    return RedirectToAction("List", "Parents");
                 }
                 else
                 {
@@ -89,7 +85,7 @@ namespace LogHub2.Controllers
         [HttpGet]
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("CurrentUser");
+            HttpContext.Session.Remove("CurrentParent");
             return RedirectToAction("Login");
         }
     }

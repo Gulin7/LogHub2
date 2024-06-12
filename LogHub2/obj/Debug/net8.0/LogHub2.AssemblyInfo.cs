@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LogHub2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c98fe15ff9b7472becc11e4c5e449f42a7ce2140")]
 [assembly: System.Reflection.AssemblyProductAttribute("LogHub2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LogHub2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

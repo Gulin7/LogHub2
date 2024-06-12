@@ -10,7 +10,7 @@ namespace LogHub2.Data
             
         }
 
-        public DbSet<Log> Logs { get; set; }
+        public DbSet<Parent> Parents { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
