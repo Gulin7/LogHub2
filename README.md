@@ -5,26 +5,26 @@
 
 <h1> Features </h1>
 <div>
- <bold> User log-in: </bold>
- users can log-in into the app, once they register an account
+ <bold> User authentification </bold>
+ Users can register and log-in the website.
 </div>
 <div>
  <bold>
   SqlServer Database Integration: 
  </bold>
-  all log reports are stored in a SqlServer database, as well as user creditentials 
+  All log reports are stored in a SqlServer database, as well as user creditentials.
 </div>
 <div>
  <bold>
   Log report management: 
  </bold>
- each user can manage their own logs (create, update, delete)
+ Each user can manage their own logs (create, update, delete).
 </div>
 <div>
  <bold>
   Log views: 
  </bold>
-  users can see all logs, as well as filter them based on type and severity
+  Users can see all logs, as well as filter them based on type and severity.
 </div>
 
 <h1> Tech Stack </h1>
